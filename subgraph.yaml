@@ -1,0 +1,35 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Feeds
+    network: arbitrum-rinkeby
+    source:
+      address: "0xbDe8f82704DF92afcf0ADbC629d52Ad61f09d55a"
+      abi: Feeds
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewFeed
+        - OwnershipTransferred
+        - PushEnergy
+        - Received
+        - SetAllow
+      abis:
+        - name: Feeds
+          file: ./abis/Feeds.json
+      eventHandlers:
+        - event: NewFeed(indexed address,indexed bytes32,indexed bytes32,string)
+          handler: handleNewFeed
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PushEnergy(indexed bytes32,indexed uint256)
+          handler: handlePushEnergy
+        - event: Received(address,uint256)
+          handler: handleReceived
+        - event: SetAllow(bytes32,bool)
+          handler: handleSetAllow
+      file: ./src/feeds.ts
