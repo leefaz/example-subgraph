@@ -1,0 +1,46 @@
+type NewFeed @entity(immutable: true) {
+  id: Bytes!
+  author: Bytes! # address
+  feedHash: Bytes! # bytes32
+  parentHash: Bytes! # bytes32
+  feedData: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PushEnergy @entity(immutable: true) {
+  id: Bytes!
+  feedHash: Bytes! # bytes32
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Received @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SetAllow @entity(immutable: true) {
+  id: Bytes!
+  theHash: Bytes! # bytes32
+  isAllow: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -4,7 +4,7 @@ schema:
 dataSources:
   - kind: ethereum
     name: Feeds
-    network: arbitrum-rinkeby
+    network: arbitrum-goerli
     source:
       address: "0xbDe8f82704DF92afcf0ADbC629d52Ad61f09d55a"
       abi: Feeds
